@@ -1,0 +1,19 @@
+{% extends "EsolvingEschoolUserBundle::template.html.twig" %}
+{% trans_default_domain "EsolvingEschoolRoomBundle" %}
+{% block title %}{% trans %}room_module{% endtrans %}{% endblock %}
+{% block content %}
+<div id="content">
+    <h1>{% trans %}register{% endtrans %}</h1>
+    <br class="clearfix">
+    <a href="{{ path('esolving_eschool_roomB_Schedule_new') }}">{% trans %}register_schedule{% endtrans %}</a>    
+    <br />
+    <a href="{{ path('esolving_eschool_roomB_Student_inscribe') }}">{% trans %}inscribe_student{% endtrans %}</a>    
+    <br />
+    <h1>{% trans %}reports{% endtrans %}</h1>
+    <br class="clearfix">
+    <a href="{{ path('esolving_eschool_roomB_Student_list_inscribe') }}">{% trans %}list_students_inscribed{% endtrans %}</a>    
+    <br />
+    <a href="{{ path('esolving_eschool_roomB_Schedule') }}">{% trans %}list_schedules{% endtrans %}</a>    
+    <br />
+</div>
+{% endblock content%}

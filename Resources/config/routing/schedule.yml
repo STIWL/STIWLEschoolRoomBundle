@@ -1,0 +1,34 @@
+esolving_eschool_roomB_Schedule:
+    pattern:  /
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:index" }    
+
+esolving_eschool_roomB_Schedule_show:
+    pattern:  /{roomId}/{teacherId}/show
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:show" }
+
+esolving_eschool_roomB_Schedule_new:
+    pattern:  /new
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:new" }
+
+esolving_eschool_roomB_Schedule_create:
+    pattern:  /create
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:create" }
+    requirements: { _method: post }
+
+esolving_eschool_roomB_Schedule_edit:
+    pattern:  /{roomId}/{teacherId}/edit
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:edit" }
+    
+esolving_eschool_roomB_Schedule_delete:
+    pattern:  /{roomId}/{teacherId}/delete
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:delete" }
+
+esolving_eschool_roomB_Schedule_update:
+    pattern:  /{roomId}/{teacherId}/update
+    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:update" }
+    requirements: { _method: post }
+
+#esolving_eschool_roomB_Schedule_delete:
+#    pattern:  /{id}/delete
+#    defaults: { _controller: "EsolvingEschoolRoomBundle:Schedule:delete" }
+#    requirements: { _method: post }

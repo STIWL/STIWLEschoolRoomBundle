@@ -1,0 +1,12 @@
+esolving_eschool_roomB_submenu:
+    pattern:  /submenu
+    defaults: { _controller: EsolvingEschoolRoomBundle:Room:submenu }
+    
+esolving_eschool_roomB_Student:
+    resource: "@EsolvingEschoolRoomBundle/Resources/config/routing/student.yml"
+    prefix:   /student
+    
+esolving_eschool_roomB_Schedule:
+    resource: "@EsolvingEschoolRoomBundle/Resources/config/routing/schedule.yml"
+    prefix:   /schedule    
+

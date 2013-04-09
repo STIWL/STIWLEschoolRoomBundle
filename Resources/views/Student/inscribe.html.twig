@@ -1,0 +1,17 @@
+{% extends "EsolvingEschoolUserBundle::template.html.twig" %}
+{% trans_default_domain 'EsolvingEschoolUserBundle'%}
+{% block title %}{% trans %}inscribe_student{% endtrans %}{% endblock %}
+{% block content %}
+<div id="content">
+    <h1>{{ block('title')}}</h1>
+<div>{% trans %}current_date{% endtrans %} {{ date() | localizeddate('long') }}</div>
+<form method="post" action="" {{ form_enctype(form) }} novalidate="">
+    {{ form_widget(form) }} 
+        <div class="form_label">&nbsp;</div>
+        <div class="form_widget"><input type="submit" value="{% trans %}register{% endtrans %}" class="button button-form"></div>
+</form>
+<ul>
+    <li><a href="{{ path('esolving_eschool_roomB_Student_list_inscribe') }}">{% trans %}back_to_the_list{% endtrans %}</a></li>
+</ul>
+</div>
+{% endblock content%}

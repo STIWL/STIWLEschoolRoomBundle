@@ -1,0 +1,88 @@
+{% extends "EsolvingEschoolUserBundle::template.html.twig" %}
+{% trans_default_domain 'EsolvingEschoolUserBundle'%}
+{% block title %}{% trans %}list_students_inscribed{% endtrans %}{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $(function() {
+        /*$("#do").on('click', function() {
+         $.ajax({
+         url: "{{ path('esolving_eschool_roomB_Student_list_inscribe') }}",
+         success: function(data) {
+         $("#request").html(data);
+         }
+         });
+         });*/
+        /*$("#{{ form.vars.id }}").on('submit', function() {
+         $.ajax({
+         method: 'get',
+         url: "{{ path('esolving_eschool_roomB_Student_list_inscribe') }}",
+         data: $(this).serialize(),
+         success: function(data) {
+         $("#request").html(data);
+         }
+         });
+         return false;
+         });*/
+    });
+    </script>
+{% endblock javascripts%}
+{% block content %}
+    <div id="content">
+        {#<a href="javascript:void(0);" id="do">do</a>#}
+            <h1>{{ block('title')}}</h1>
+            <ul>
+                <li><a href="{{ path('esolving_eschool_roomB_Student_inscribe') }}">{% trans %}inscribe_student{% endtrans %}</a>    </li>
+            </ul>
+            <div class="filter">
+                <form method="get" action="" id="{{ form.vars.id }}" novalidate="">
+                    <div id="request">
+    {{ form_widget(form)}}
+                        </div>
+                        <div class="form_label">&nbsp;</div>
+                        <div class="form_widget"><input type="submit" name="search" value="{% trans %}search{% endtrans %}" class="button button-form"></div>
+                    </form>
+                </div>
+    {{ knp_pagination_render(inscribes.pagination)}}
+                <table class="fancyTable">
+                    <thead>
+                        <tr>
+                            <th>{% trans %}room{% endtrans %}</th>
+                            <th>{% trans %}student{% endtrans %}</th>
+                            <th>{% trans %}date_inscribed{% endtrans %}</th>
+                            <th>{% trans %}status{% endtrans %}</th>
+                            <th>{% trans %}actions{% endtrans %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        {% for inscribe in inscribes.pagination %}
+                            <tr>
+                                <td>{{ inscribe.room.roomType.languages.0.description }}</td>
+                                <td><a href="{{ path('esolving_eschool_userB_Student_show',{'studentId':inscribe.student.id}) }}">{{ inscribe.student.user }}</a></td>
+                                <td>{{ inscribe.inscribedAt | localizeddate('long','none') }}</td>
+                                <td align="center">
+                        {% if inscribe.status %}
+                                <span class="ui-icon ui-icon-check"></span>
+                        {% else %}
+                                <span class="ui-icon ui-icon-close"></span>
+                        {% endif %}
+                        </td>
+                                <td>
+                                    <ul>
+                                        
+                                        <li><a href="{{ path('esolving_eschool_userB_Student_show_inscribe',{'studentInscribeId':inscribe.id}) }}">{% trans %}show{% endtrans %}</a></li>
+                                        <li><a href="{{ path('esolving_eschool_userB_Student_edit_inscribe',{'studentInscribeId':inscribe.id}) }}">{% trans %}edit{% endtrans %}</a></li>
+                                        <li><a href="{{ path('esolving_eschool_userB_Student_delete_inscribe',{'studentInscribeId':inscribe.id}) }}">{% trans %}delete{% endtrans %}</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+        {% else %}
+                            <tr>
+                                <td colspan="5">{% trans %}empty{% endtrans %}</td>
+                            </tr>    
+        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+{% endblock content%}
+

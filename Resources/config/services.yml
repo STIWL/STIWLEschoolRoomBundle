@@ -1,0 +1,14 @@
+parameters:
+    esolving_eschool_room.form.type.room.class: Esolving\Eschool\RoomBundle\Form\Type\RoomType
+    esolving_eschool_room.validator.constraints.room_unique_constraints.class: Esolving\Eschool\RoomBundle\Validator\Constraints\RoomUniqueConstraintsValidator
+    
+services:
+    esolving_eschool_room.form.type.room:
+        class: %esolving_eschool_room.form.type.room.class%
+        arguments: ['@service_container','@doctrine.orm.default_entity_manager']
+        
+    esolving_eschool_room.validator.constraints.room_unique_constraints:
+        class: %esolving_eschool_room.validator.constraints.room_unique_constraints.class%
+        arguments: ['@doctrine.orm.entity_manager','@service_container']
+        tags:
+            - { name: validator.constraint_validator, alias: RoomUniqueConstraintsValidator }

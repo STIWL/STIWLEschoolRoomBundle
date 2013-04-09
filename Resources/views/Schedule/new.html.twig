@@ -1,0 +1,20 @@
+{% extends "EsolvingEschoolUserBundle::template.html.twig" %}
+{% trans_default_domain "EsolvingEschoolRoomBundle" %}
+{% block title %}{% trans %}create_schedule{% endtrans %}{% endblock %}
+{% block content %}
+<div id="content">
+    <h1>{{ block('title') }}</h1>
+
+    <form action="{{ path('esolving_eschool_roomB_Schedule_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+            <div class="form_label">&nbsp;</div>
+            <div class="form_widget"><input type="submit" value="{% trans %}create_schedule{% endtrans %}" class="button button-form"></div>
+        </form>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('esolving_eschool_roomB_Schedule') }}">{% trans %}back_to_the_list{% endtrans %}</a>
+            </li>
+        </ul>
+    </div>
+{% endblock content %}

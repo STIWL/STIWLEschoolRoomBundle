@@ -1,0 +1,28 @@
+{% trans_default_domain 'EsolvingEschoolUserBundle' %}
+<table class="fancyTable">
+    <tbody>
+        <tr>
+            <th>{% trans %}student{% endtrans %}</th>
+            <td><a href="{{ path('esolving_eschool_userB_Student_show',{'studentId':studentInscribe.student.id}) }}">{{ studentInscribe.student.user }}</a></td>
+        </tr>
+        <tr>
+            <th>{% trans %}room{% endtrans %}</th>
+            <td>{{ studentInscribe.room.roomType.languages.0.description }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}date_inscribed{% endtrans %}</th>
+            <td>{{ studentInscribe.inscribedAt | localizeddate('long','none')}}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}status{% endtrans %}</th>
+            <td>
+                {% if studentInscribe.status %}
+                    <span class="ui-icon ui-icon-check"></span>
+                {% else %}
+                    <span class="ui-icon ui-icon-close"></span>
+                {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+

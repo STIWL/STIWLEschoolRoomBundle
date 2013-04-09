@@ -1,0 +1,19 @@
+esolving_eschool_roomB_Student_delete_inscribe:
+    pattern: /{studentInscribeId}/delete-inscribe
+    defaults: { _controller: EsolvingEschoolRoomBundle:Student:deleteInscribe }     
+    
+esolving_eschool_roomB_Student_edit_inscribe:
+    pattern: /{studentInscribeId}/edit-inscribe
+    defaults: { _controller: EsolvingEschoolRoomBundle:Student:editInscribe } 
+    
+esolving_eschool_roomB_Student_show_inscribe:
+    pattern: /{studentInscribeId}/show-inscribe
+    defaults: { _controller: EsolvingEschoolRoomBundle:Student:showInscribe }     
+    
+esolving_eschool_roomB_Student_list_inscribe:
+    pattern: /list-inscribe
+    defaults: { _controller: EsolvingEschoolRoomBundle:Student:listInscribe }
+    
+esolving_eschool_roomB_Student_inscribe:
+    pattern: /inscribe
+    defaults: { _controller: EsolvingEschoolRoomBundle:Student:inscribe }    

@@ -1,0 +1,31 @@
+{% trans_default_domain "EsolvingEschoolRoomBundle" %}
+<table class="record_properties fancyTable">
+    <tbody>
+        <tr>
+            <th>{% trans %}room{% endtrans %}</th>
+            <td>{{ entity.room.roomtype.languages.0.description }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}teacher{% endtrans %}</th>
+            <td>{{ entity.teacher.user }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}time_start{% endtrans %}</th>
+            <td>{{ entity.timeStart |date('h:i:s a') }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}time_end{% endtrans %}</th>
+            <td>{{ entity.timeEnd |date('h:i:s a') }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}status{% endtrans %}</th>
+            <td>
+                {% if entity.status %}
+                    <span class="ui-icon ui-icon-check"></span>
+                {% else %}
+                    <span class="ui-icon ui-icon-close"></span>
+                {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>

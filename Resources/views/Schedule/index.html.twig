@@ -1,0 +1,56 @@
+{% extends "EsolvingEschoolUserBundle::template.html.twig" %}
+{% trans_default_domain "EsolvingEschoolRoomBundle" %}
+{% block title %}{% trans %}list_schedules{% endtrans %}{% endblock %}
+{% block content %}
+<div id="content">
+    <h1>{{ block('title') }}</h1>
+    <ul>
+        <li>
+            <a href="{{ path('esolving_eschool_roomB_Schedule_new') }}">{% trans %}create_new{% endtrans %}</a>
+        </li>
+    </ul>
+    <div id="navigation">
+        {#{{ knp_pagination_render(teachers.pagination) }}#}
+        </div>
+    <table class="records_list fancyTable">
+        <thead>
+            <tr>
+                <th>{% trans %}teacher{% endtrans %}</th>
+                <th>{% trans %}room{% endtrans %}</th>
+                <th>{% trans %}section{% endtrans %}</th>
+                <th>{% trans %}headquarter{% endtrans %}</th>
+                <th>{% trans %}time_start{% endtrans %}</th>
+                <th>{% trans %}time_end{% endtrans %}</th>
+                <th>{% trans %}status{% endtrans %}</th>
+                <th>{% trans %}actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.teacher.user }}</td>
+                    <td>{{ entity.room.roomType.languages.0.description }}</td>
+                    <td>{{ entity.room.sectionType.languages.0.description }}</td>
+                    <td>{{ entity.room.headquarterType.languages.0.description }}</td>
+                    <td>{{ entity.timeStart | date('h:i:s a') }}</td>
+                    <td>{{ entity.timeEnd | date('h:i:s a') }}</td>
+                    <td>{{ entity.status }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('esolving_eschool_roomB_Schedule_show', { 'roomId': entity.room.id,'teacherId':entity.teacher.id }) }}">{% trans %}show{% endtrans %}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('esolving_eschool_roomB_Schedule_edit', { 'roomId': entity.room.id,'teacherId':entity.teacher.id }) }}">{% trans %}edit{% endtrans %}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('esolving_eschool_roomB_Schedule_delete', { 'roomId': entity.room.id,'teacherId':entity.teacher.id }) }}">{% trans %}delete{% endtrans %}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
